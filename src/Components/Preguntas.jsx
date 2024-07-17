@@ -19,31 +19,33 @@ import respuestaMala5 from "../Images/Pregunta_05_03.png";
 
 const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState(60);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (timeLeft === 0) return;
+    if (timeLeft === 0) {
+      navigate('/');
+    }
     const timerId = setInterval(() => {
       setTimeLeft(timeLeft - 1);
     }, 1000);
-
     return () => clearInterval(timerId);
-  }, [timeLeft]);
+  }, [timeLeft, navigate]);
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
-      2,
-      "0"
-    )}`;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
   };
 
+
   return (
-    <span className="absolute top-[235px] right-[145px] text-3xl text-white px-4 py-2 bg-[#FD8204] rounded-lg w-52 h-12 flex items-center justify-center">
+    <span className="absolute top-[230px] right-[145px] text-3xl text-white px-4 py-2 bg-[#FD8204] rounded-lg w-52 h-12 flex items-center justify-center">
       <span className="mt-[-5px]">{formatTime(timeLeft)} Seg</span>
     </span>
   );
 };
+
+  
 
 const Preguntas = () => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
@@ -55,6 +57,8 @@ const Preguntas = () => {
   const [showCircleWithBorder4, setShowCircleWithBorder4] = useState(true);
   const [showCircleWithBorder5, setShowCircleWithBorder5] = useState(true); 
   const navigate = useNavigate();
+
+  
 
   const handleClick = () => {
     setShowRespuesta(true); // Mostrar respuesta al hacer clic
@@ -161,7 +165,7 @@ const Preguntas = () => {
 
   return (
     <div className="relative">
-      <h1 className="absolute top-[230px] left-32 text-3xl text-slate-700 px-4 py-2">
+      <h1 className="absolute top-[230px] left-28 text-3xl text-slate-700 px-4 py-2">
         RESPUESTAS CORRECTAS
       </h1>
       <Countdown />

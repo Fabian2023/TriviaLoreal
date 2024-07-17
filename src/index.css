@@ -1,3 +1,16 @@
+html {
+  touch-action: manipulation;
+}
+
+body {
+  touch-action: manipulation;
+  -ms-content-zooming: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

@@ -16,7 +16,7 @@ const Landing = () => {
   return (
     <div className="page-container">
       <div className="picture1">
-        <img src={inicio} alt="inicio"  onClick={handleClick}></img>
+        <img src={inicio} alt="inicio"  onClick={handleClick} className="noZoom" ></img>
       </div>
     </div>
   );
