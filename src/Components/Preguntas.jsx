@@ -39,7 +39,7 @@ const Countdown = () => {
 
 
   return (
-    <span className="absolute top-[230px] right-[145px] text-3xl text-white px-4 py-2 bg-[#FD8204] rounded-lg w-52 h-12 flex items-center justify-center">
+    <span className="absolute top-[152px] right-[40px] text-3xl text-white px-4 py-2 bg-[#FD8204] rounded-lg w-44 h-9 flex items-center justify-center">
       <span className="mt-[-5px]">{formatTime(timeLeft)} Seg</span>
     </span>
   );
@@ -165,40 +165,40 @@ const Preguntas = () => {
 
   return (
     <div className="relative">
-      <h1 className="absolute top-[230px] left-28 text-3xl text-slate-700 px-4 py-2">
+      <h1 className="absolute top-[150px] left-16 text-xl text-slate-700 px-4 py-2">
         RESPUESTAS CORRECTAS
       </h1>
       <Countdown />
       
       {/* Mostrar u ocultar círculos con borde según la pregunta actual */}
       {showCircleWithBorder ? (
-        <div className="absolute w-10 h-10 border-4 border-[#FD8204] rounded-full top-[235px] left-[490px]"></div>
+        <div className="absolute w-8 h-8 border-4 border-[#FD8204] rounded-full top-[155px] left-[320px]"></div>
       ) : (
-        <div className="absolute w-10 h-10 bg-[#FD8204] rounded-full top-[235px] left-[490px]"></div>
+        <div className="absolute w-8 h-8 bg-[#FD8204] rounded-full top-[155px] left-[320px]"></div>
       )}
       
       {showCircleWithBorder2 ? (
-        <div className="absolute w-10 h-10 border-4 border-[#FD8204] rounded-full top-[235px] left-[536px]"></div>
+        <div className="absolute w-8 h-8 border-4 border-[#FD8204] rounded-full top-[155px] left-[355px]"></div>
       ) : (
-        <div className="absolute w-10 h-10 bg-[#FD8204] rounded-full top-[235px] left-[536px]"></div>
+        <div className="absolute w-8 h-8 bg-[#FD8204] rounded-full top-[155px] left-[355px]"></div>
       )}
       
       {showCircleWithBorder3 ? (
-        <div className="absolute w-10 h-10 border-4 border-[#FD8204] rounded-full top-[235px] left-[582px]"></div>
+        <div className="absolute w-8 h-8 border-4 border-[#FD8204] rounded-full top-[155px] left-[390px]"></div>
       ) : (
-        <div className="absolute w-10 h-10 bg-[#FD8204] rounded-full top-[235px] left-[582px]"></div>
+        <div className="absolute w-8 h-8 bg-[#FD8204] rounded-full top-[155px] left-[390px]"></div>
       )}
       
       {showCircleWithBorder4 ? (
-        <div className="absolute w-10 h-10 border-4 border-[#FD8204] rounded-full top-[235px] left-[628px]"></div>
+        <div className="absolute w-8 h-8 border-4 border-[#FD8204] rounded-full top-[155px] left-[425px]"></div>
       ) : (
-        <div className="absolute w-10 h-10 bg-[#FD8204] rounded-full top-[235px] left-[628px]"></div>
+        <div className="absolute w-8 h-8 bg-[#FD8204] rounded-full top-[155px] left-[425px]"></div>
       )}
       
       {showCircleWithBorder5 ? (
-        <div className="absolute w-10 h-10 border-4 border-[#FD8204] rounded-full top-[235px] left-[674px]"></div>
+        <div className="absolute w-8 h-8 border-4 border-[#FD8204] rounded-full top-[155px] left-[460px]"></div>
       ) : (
-        <div className="absolute w-10 h-10 bg-[#FD8204] rounded-full top-[235px] left-[674px]"></div>
+        <div className="absolute w-8 h-8 bg-[#FD8204] rounded-full top-[155px] left-[460px]"></div>
       )}
 
       <div className="picture1">
@@ -207,19 +207,19 @@ const Preguntas = () => {
 
       {/* Botones de respuesta */}
       <div
-        className="absolute top-[1520px] right-36 p-4 w-96 h-16 z-10"
+        className="absolute top-[1010px]  left-96 p-4 w-56 h-12 z-10"
         onClick={currentQuestion === 1 || currentQuestion === 3 ? handleClick : handleClickBad}
       />
       <div
-        className="absolute top-[1600px] right-36 p-4 w-96 h-16 z-10"
+        className="absolute top-[1065px]  right-28 p-4 w-56 h-12 z-10"
         onClick={currentQuestion === 2 || currentQuestion === 4 ? handleClick : handleClickBad}
       />
       <div
-        className="absolute top-[1530px]  left-36 p-4 w-96 h-16 z-10"
+        className="absolute top-[1010px]   left-28 p-4 w-56 h-12 z-10"
         onClick={currentQuestion === 5 ? handleClick : handleClickBad}
       />
       <div
-        className="absolute top-[1610px] left-36 p-4 w-96 h-16 z-10"
+        className="absolute top-[1065px]    left-28 p-4 w-56 h-12 z-10"
         onClick={handleClickBad}
       />
     </div>
