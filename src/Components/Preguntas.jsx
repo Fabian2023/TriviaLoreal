@@ -37,15 +37,12 @@ const Countdown = () => {
     return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
   };
 
-
   return (
     <span className="absolute top-[152px] right-[40px] text-3xl text-white px-4 py-2 bg-[#FD8204] rounded-lg w-44 h-9 flex items-center justify-center">
       <span className="mt-[-5px]">{formatTime(timeLeft)} Seg</span>
     </span>
   );
 };
-
-  
 
 const Preguntas = () => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
@@ -58,57 +55,76 @@ const Preguntas = () => {
   const [showCircleWithBorder5, setShowCircleWithBorder5] = useState(true); 
   const navigate = useNavigate();
 
+ const handleClick = () => {
+  setShowRespuesta(true);
 
-  
-
-  const handleClick = () => {
-    setShowRespuesta(true); // Mostrar respuesta al hacer clic
-  
-    // Después de 2 segundos, cambiar a la siguiente pregunta
-    setTimeout(() => {
-      if (currentQuestion === 5) {
-        // Si es la quinta pregunta, ocultar el círculo con borde inmediatamente
-        setShowCircleWithBorder5(false);
-        
-        // Redirigir después de 2 segundos
-        setTimeout(() => {
-          navigate('/');
-        }, 2000);
-      } else {
-        setShowRespuesta(false);
-        setShowRespuestaMala(false); // Resetear la respuesta mala
-        setCurrentQuestion((prev) => prev + 1); // Pasar a la siguiente pregunta
-  
-        // Ocultar el círculo con borde según la pregunta actual
-        switch (currentQuestion) {
-          case 1:
-            setShowCircleWithBorder(false);
-            break;
-          case 2:
-            setShowCircleWithBorder2(false);
-            break;
-          case 3:
-            setShowCircleWithBorder3(false);
-            break;
-          case 4:
-            setShowCircleWithBorder4(false);
-            break;
-          default:
-            break;
-        }
-      }
-    }, 2000);
-  };
-
-  const handleClickBad = () => {
-    setShowRespuestaMala(true); // Mostrar respuesta mala al hacer clic
-    
-    // Resetear a la pregunta actual después de mostrar la respuesta incorrecta
-    setTimeout(() => {
+  setTimeout(() => {
+    if (currentQuestion === 5) {
+      setShowCircleWithBorder5(false);
+      
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+    } else {
+      setShowRespuesta(false);
       setShowRespuestaMala(false);
-      setShowRespuesta(false); // Resetear la respuesta correcta si estaba mostrada
-    }, 2000); // Espera 2 segundos antes de resetear
-  };
+      setCurrentQuestion(prev => prev + 1);
+
+      switch (currentQuestion) {
+        case 1:
+          setShowCircleWithBorder(false);
+          break;
+        case 2:
+          setShowCircleWithBorder2(false);
+          break;
+        case 3:
+          setShowCircleWithBorder3(false);
+          break;
+        case 4:
+          setShowCircleWithBorder4(false);
+          break;
+        default:
+          break;
+      }
+    }
+  }, 2000);
+};
+
+const handleClickBad = () => {
+  setShowRespuestaMala(true);
+
+  setTimeout(() => {
+    setShowRespuestaMala(false);
+    setShowRespuesta(false);
+
+    if (currentQuestion === 5) {
+      setShowCircleWithBorder5(false);
+      setShowRespuestaMala(true);
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+    } else {
+      setCurrentQuestion(prev => prev + 1);
+
+      switch (currentQuestion) {
+        case 1:
+          setShowCircleWithBorder(false);
+          break;
+        case 2:
+          setShowCircleWithBorder2(false);
+          break;
+        case 3:
+          setShowCircleWithBorder3(false);
+          break;
+        case 4:
+          setShowCircleWithBorder4(false);
+          break;
+        default:
+          break;
+      }
+    }
+  }, 2000);
+};
 
   const getQuestionContent = () => {
     if (showRespuestaMala) {
@@ -160,7 +176,7 @@ const Preguntas = () => {
           <img src={pregunta5} alt="pregunta 5" className="w-full" />
         );
       default:
-        return null; // Puedes manejar más preguntas aquí si es necesario
+        return null;
     }
   };
 
@@ -171,7 +187,6 @@ const Preguntas = () => {
       </h1>
       <Countdown />
       
-      {/* Mostrar u ocultar círculos con borde según la pregunta actual */}
       {showCircleWithBorder ? (
         <div className="absolute w-8 h-8 border-4 border-[#FD8204] rounded-full top-[155px] left-[320px]"></div>
       ) : (
@@ -206,7 +221,6 @@ const Preguntas = () => {
         {getQuestionContent()}
       </div>
 
-      {/* Botones de respuesta */}
       <div
         className="absolute top-[1010px]  left-96 p-4 w-56 h-12 z-10"
         onClick={currentQuestion === 1 || currentQuestion === 3 ? handleClick : handleClickBad}
