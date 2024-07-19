@@ -58,6 +58,7 @@ const Preguntas = () => {
   const [showCircleWithBorder5, setShowCircleWithBorder5] = useState(true); 
   const navigate = useNavigate();
 
+
   
 
   const handleClick = () => {
