@@ -23,7 +23,7 @@ const Countdown = () => {
 
   useEffect(() => {
     if (timeLeft === 0) {
-      navigate('/');
+      window.location.href = 'https://cloud.mail.beautynews.co/MARATON_LRP_2024_INDEX';
     }
     const timerId = setInterval(() => {
       setTimeLeft(timeLeft - 1);
@@ -53,7 +53,7 @@ const Preguntas = () => {
   const [showCircleWithBorder3, setShowCircleWithBorder3] = useState(true);
   const [showCircleWithBorder4, setShowCircleWithBorder4] = useState(true);
   const [showCircleWithBorder5, setShowCircleWithBorder5] = useState(true); 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
  const handleClick = () => {
   setShowRespuesta(true);
@@ -63,7 +63,7 @@ const Preguntas = () => {
       setShowCircleWithBorder5(false);
       
       setTimeout(() => {
-        navigate('/');
+        window.location.href = 'https://cloud.mail.beautynews.co/MARATON_LRP_2024_INDEX';
       }, 2000);
     } else {
       setShowRespuesta(false);
@@ -101,7 +101,7 @@ const handleClickBad = () => {
       setShowCircleWithBorder5(false);
       setShowRespuestaMala(true);
       setTimeout(() => {
-        navigate('/');
+        window.location.href = 'https://cloud.mail.beautynews.co/MARATON_LRP_2024_INDEX';
       }, 2000);
     } else {
       setCurrentQuestion(prev => prev + 1);
