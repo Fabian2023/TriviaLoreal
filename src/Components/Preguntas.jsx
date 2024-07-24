@@ -53,78 +53,88 @@ const Preguntas = () => {
   const [showCircleWithBorder3, setShowCircleWithBorder3] = useState(true);
   const [showCircleWithBorder4, setShowCircleWithBorder4] = useState(true);
   const [showCircleWithBorder5, setShowCircleWithBorder5] = useState(true); 
-  //const navigate = useNavigate();
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  
+  const handleClick = () => {
+    if (isButtonDisabled) return;
 
- const handleClick = () => {
-  setShowRespuesta(true);
+    setShowRespuesta(true);
+    setIsButtonDisabled(true);
 
-  setTimeout(() => {
-    if (currentQuestion === 5) {
-      setShowCircleWithBorder5(false);
-      
-      setTimeout(() => {
-        window.location.href = 'https://cloud.mail.beautynews.co/MARATON_LRP_2024_INDEX';
-      }, 2000);
-    } else {
-      setShowRespuesta(false);
+    setTimeout(() => {
+      if (currentQuestion === 5) {
+        setShowCircleWithBorder5(false);
+        
+        setTimeout(() => {
+          window.location.href = 'https://cloud.mail.beautynews.co/MARATON_LRP_2024_INDEX';
+        }, 2000);
+      } else {
+        setShowRespuesta(false);
+        setShowRespuestaMala(false);
+        setCurrentQuestion(prev => prev + 1);
+
+        switch (currentQuestion) {
+          case 1:
+            setShowCircleWithBorder(false);
+            break;
+          case 2:
+            setShowCircleWithBorder2(false);
+            break;
+          case 3:
+            setShowCircleWithBorder3(false);
+            break;
+          case 4:
+            setShowCircleWithBorder4(false);
+            break;
+          default:
+            break;
+        }
+
+        setIsButtonDisabled(false);
+      }
+    }, 2000);
+  };
+
+  const handleClickBad = () => {
+    if (isButtonDisabled) return;
+
+    setShowRespuestaMala(true);
+    setIsButtonDisabled(true);
+
+    setTimeout(() => {
       setShowRespuestaMala(false);
-      setCurrentQuestion(prev => prev + 1);
+      setShowRespuesta(false);
 
-      switch (currentQuestion) {
-        case 1:
-          setShowCircleWithBorder(false);
-          break;
-        case 2:
-          setShowCircleWithBorder2(false);
-          break;
-        case 3:
-          setShowCircleWithBorder3(false);
-          break;
-        case 4:
-          setShowCircleWithBorder4(false);
-          break;
-        default:
-          break;
+      if (currentQuestion === 5) {
+        setShowCircleWithBorder5(false);
+        setShowRespuestaMala(true);
+        setTimeout(() => {
+          window.location.href = 'https://cloud.mail.beautynews.co/MARATON_LRP_2024_INDEX';
+        }, 2000);
+      } else {
+        setCurrentQuestion(prev => prev + 1);
+
+        switch (currentQuestion) {
+          case 1:
+            setShowCircleWithBorder(false);
+            break;
+          case 2:
+            setShowCircleWithBorder2(false);
+            break;
+          case 3:
+            setShowCircleWithBorder3(false);
+            break;
+          case 4:
+            setShowCircleWithBorder4(false);
+            break;
+          default:
+            break;
+        }
+
+        setIsButtonDisabled(false);
       }
-    }
-  }, 2000);
-};
-
-const handleClickBad = () => {
-  setShowRespuestaMala(true);
-
-  setTimeout(() => {
-    setShowRespuestaMala(false);
-    setShowRespuesta(false);
-
-    if (currentQuestion === 5) {
-      setShowCircleWithBorder5(false);
-      setShowRespuestaMala(true);
-      setTimeout(() => {
-        window.location.href = 'https://cloud.mail.beautynews.co/MARATON_LRP_2024_INDEX';
-      }, 2000);
-    } else {
-      setCurrentQuestion(prev => prev + 1);
-
-      switch (currentQuestion) {
-        case 1:
-          setShowCircleWithBorder(false);
-          break;
-        case 2:
-          setShowCircleWithBorder2(false);
-          break;
-        case 3:
-          setShowCircleWithBorder3(false);
-          break;
-        case 4:
-          setShowCircleWithBorder4(false);
-          break;
-        default:
-          break;
-      }
-    }
-  }, 2000);
-};
+    }, 2000);
+  };
 
   const getQuestionContent = () => {
     if (showRespuestaMala) {
@@ -222,19 +232,19 @@ const handleClickBad = () => {
       </div>
 
       <div
-        className="absolute top-[1010px]  left-96 p-4 w-56 h-12 z-10"
+        className={`absolute top-[1010px] left-96 p-4 w-56 h-12 z-10 ${isButtonDisabled ? 'cursor-not-allowed opacity-50' : ''}`}
         onClick={currentQuestion === 1 || currentQuestion === 3 ? handleClick : handleClickBad}
       />
       <div
-        className="absolute top-[1065px]  right-28 p-4 w-56 h-12 z-10"
+        className={`absolute top-[1065px] right-28 p-4 w-56 h-12 z-10 ${isButtonDisabled ? 'cursor-not-allowed opacity-50' : ''}`}
         onClick={currentQuestion === 2 || currentQuestion === 4 ? handleClick : handleClickBad}
       />
       <div
-        className="absolute top-[1010px]   left-28 p-4 w-56 h-12 z-10"
+        className={`absolute top-[1010px] left-28 p-4 w-56 h-12 z-10 ${isButtonDisabled ? 'cursor-not-allowed opacity-50' : ''}`}
         onClick={currentQuestion === 5 ? handleClick : handleClickBad}
       />
       <div
-        className="absolute top-[1065px]    left-28 p-4 w-56 h-12 z-10"
+        className={`absolute top-[1065px] left-28 p-4 w-56 h-12 z-10 ${isButtonDisabled ? 'cursor-not-allowed opacity-50' : ''}`}
         onClick={handleClickBad}
       />
     </div>
