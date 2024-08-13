@@ -1,6 +1,6 @@
 # Loreal Trivia (juegos de destreza)
 
-**Loreal Trivia** es una aplicación de trivia desarrollada con React y Vite, diseñada para pantallas de 834x1042 píxeles. Este proyecto está configurado para ejecutarse localmente y también está desplegado en Vercel para acceso en línea.
+**Loreal Trivia** es una aplicación de trivia desarrollada con React y Vite, diseñada para pantallas de 720x1184 píxeles. Este proyecto está configurado para ejecutarse localmente y también está desplegado en Vercel para acceso en línea.
 
 ## Tecnologías
 
